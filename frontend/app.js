@@ -5,7 +5,14 @@
 
 // Website and backend same PC-la run pannina localhost use pannu.
 // Vera phone / PC-la open panna, un PC-oda LAN IP use pannanum.
-const API_BASE = "http://127.0.0.1:8000";
+const LOCAL_API = "http://127.0.0.1:8000";
+const ONLINE_API = "https://devil-hacking-tool.onrender.com";
+
+const API_BASE = window.location.hostname === "localhost" ||
+window.location.hostname === "127.0.0.1"
+? LOCAL_API
+: ONLINE_API;
+
 
 const getElement = (id) => document.getElementById(id);
 
