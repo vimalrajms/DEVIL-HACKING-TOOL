@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta name="theme-color" content="#080a10">
+<meta name="description" content="DEVIL Cybersecurity Toolkit - Defensive network monitoring and security diagnostics.">
+
+<title>DEVIL | Cybersecurity Toolkit</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-icon">D</div>
+
+        <div>
+            <h1>DEVIL</h1>
+            <p>CYBERSECURITY TOOLKIT</p>
+        </div>
+    </div>
+
+    <div class="connection-badge">
+        <span class="status-dot" id="backendDot"></span>
+        <span id="backendStatus">Backend: Checking...</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <p class="eyebrow">DEFENSIVE SECURITY CONSOLE</p>
+
+        <h2>
+            Analyze.<br>
+            <span>Monitor. Protect.</span>
+        </h2>
+
+        <p class="hero-description">
+            Your personal cybersecurity dashboard for authorized
+            network monitoring and security diagnostics.
+        </p>
+
+    </section>
+
+
+    <section class="status-grid">
+
+        <article class="panel status-card">
+            <p class="card-label">PYTHON BACKEND</p>
+            <h3 id="apiStatus">Checking...</h3>
+            <p id="apiDetail">Waiting for API response</p>
+        </article>
+
+        <article class="panel status-card">
+            <p class="card-label">ESP32 DEVICE</p>
+            <h3 id="espStatus">Offline</h3>
+            <p id="espDetail">Waiting for device heartbeat</p>
+        </article>
+
+        <article class="panel status-card">
+            <p class="card-label">SECURITY MODE</p>
+            <h3>Defensive</h3>
+            <p>Authorized testing only</p>
+        </article>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">NETWORK MONITORING</p>
+                <h2>Nearby Wi-Fi Scanner</h2>
+            </div>
+
+            <span class="version-badge">ESP32</span>
+        </div>
+
+
+        <article class="panel scanner-panel">
+
+            <div class="scanner-description">
+
+                <div class="feature-icon">📡</div>
+
+                <div>
+                    <h3>Wireless Network Discovery</h3>
+
+                    <p>
+                        View nearby Wi-Fi networks detected by your
+                        ESP32 and inspect their signal strength,
+                        channel, and advertised security type.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="scanner-controls">
+
+                <button id="scanButton" type="button">
+                    Scan Nearby Wi-Fi
+                </button>
+
+                <button id="refreshWifiButton"
+                        class="secondary-button"
+                        type="button">
+                    Refresh Results
+                </button>
+
+            </div>
+
+
+            <p id="wifiScanStatus" class="information-message">
+                Connect your ESP32 and backend to retrieve actual
+                nearby Wi-Fi scan results.
+            </p>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>NETWORK NAME</th>
+                            <th>SIGNAL</th>
+                            <th>CHANNEL</th>
+                            <th>SECURITY</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="wifiResults">
+
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                Waiting for ESP32 scan results...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p class="small-note">
+                Scan results are observational only. This tool does
+                not attempt to join networks, capture credentials,
+                or bypass Wi-Fi security.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">WEBSITE SECURITY</p>
+                <h2>HTTPS Certificate Checker</h2>
+            </div>
+        </div>
+
+
+        <article class="panel tool-panel">
+
+            <div class="feature-icon">🔐</div>
+
+            <h3>Check HTTPS Certificate</h3>
+
+            <p>
+                Inspect the HTTPS certificate of a public website
+                you own or are authorized to assess.
+            </p>
+
+            <form id="httpsForm">
+
+                <label for="httpsUrl">
+                    Public HTTPS Website
+                </label>
+
+                <input
+                    id="httpsUrl"
+                    type="url"
+                    placeholder="https://example.com"
+                    required
+                >
+
+                <button type="submit" id="httpsButton">
+                    Check Certificate
+                </button>
+
+            </form>
+
+            <pre id="httpsResult" class="result-box">Certificate results will appear here.</pre>
+
+        </article>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">PASSWORD SAFETY</p>
+                <h2>Password Strength Analyzer</h2>
+            </div>
+        </div>
+
+
+        <article class="panel tool-panel">
+
+            <div class="feature-icon">🛡️</div>
+
+            <h3>Analyze a Sample Password</h3>
+
+            <p>
+                Password strength is checked locally in your browser.
+                Do not enter a password you currently use.
+            </p>
+
+            <label for="passwordInput">
+                Sample Password
+            </label>
+
+            <input
+                id="passwordInput"
+                type="password"
+                placeholder="Enter a test password"
+                autocomplete="off"
+            >
+
+            <div class="strength-track">
+                <div id="strengthBar"></div>
+            </div>
+
+            <p id="passwordResult" class="information-message">
+                Waiting for sample password.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">HARDWARE MONITORING</p>
+                <h2>ESP32 Device Information</h2>
+            </div>
+        </div>
+
+
+        <article class="panel device-panel">
+
+            <div class="device-row">
+                <span>Device name</span>
+                <strong id="deviceName">Not connected</strong>
+            </div>
+
+            <div class="device-row">
+                <span>ESP32 local IP</span>
+                <strong id="deviceIp">—</strong>
+            </div>
+
+            <div class="device-row">
+                <span>Device uptime</span>
+                <strong id="deviceUptime">—</strong>
+            </div>
+
+            <div class="device-row">
+                <span>OLED status</span>
+                <strong id="oledStatus">—</strong>
+            </div>
+
+            <div class="device-row">
+                <span>Last heartbeat</span>
+                <strong id="lastHeartbeat">—</strong>
+            </div>
+
+            <button
+                id="refreshDeviceButton"
+                class="secondary-button"
+                type="button">
+                Refresh Device Status
+            </button>
+
+        </article>
+
+    </section>
+
+
+    <footer>
+
+        <div class="footer-brand">
+            DEVIL <span>CYBERSECURITY TOOLKIT</span>
+        </div>
+
+        <p>
+            Built for learning, defensive monitoring,
+            and authorized security testing.
+        </p>
+
+        <p class="footer-version">
+            VERSION 0.1.0 • LOCAL DEVELOPMENT
+        </p>
+
+    </footer>
+
+</main>
+
+
+<script src="app.js"></script>
+
+
+</body>
+</html>
